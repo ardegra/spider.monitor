@@ -59,7 +59,7 @@ export const startStopClick = (spiderName) => {return (dispatch,getState) => {
     if(spiderlist[idx].status===false){
         axios.post(`${BASE_API_URL}/agentJob`, {
             spiderName: spiderName,
-            imageName: 'franziz/ardegra'
+            imageName: 'ardegra/ardegra:v3'
         }).then(response => {
             dispatch(showSuccess())
         })
@@ -72,7 +72,7 @@ export const startAllClick = () => {return (dispatch,getState) => {
     spiderlist.map((value,index) => {
         axios.post(`${BASE_API_URL}/agentJob`, {
             spiderName: value.name,
-            imageName: 'franziz/ardegra'
+            imageName: 'ardegra/ardegra:v3'
         }).then(response => {
             dispatch(showSuccess())
         }) 

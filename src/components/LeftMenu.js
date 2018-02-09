@@ -66,7 +66,7 @@ class LeftMenu extends Component {
                   </Link>
                 </li>
                 <li>
-                  <Link className="left-menu-link" to="/spiders/entryDateParser/test">
+                  <Link className="left-menu-link" to="/parser/entryDate/test">
                     <i className="left-menu-link-icon fa fa-folder"></i>
                     Entry Date Parser Test
                   </Link>

@@ -12,6 +12,7 @@ import Spiders from  "./containers/Spiders";
 import DetailSpider from "./containers/DetailSpider";
 import ModifySpider from "./containers/ModifySpider";
 import SpiderTestPage from "./containers/page/SpiderTestPage";
+import EntryDateParserTestPage from "./containers/page/EntryDateParserTestPage";
 
 import reducers from "./reducers";
 import { Provider } from "react-redux";
@@ -37,6 +38,7 @@ class App extends Component {
               <Route exact path="/spiders/detail/:name/:type" component={DetailSpider}/>
               <Route exact path="/spiders/modify/:name/:type" component={ModifySpider}/>
               <Route exact path="/spiders/test" component={SpiderTestPage}/>
+              <Route exact path="/parser/entryDate/test" component={EntryDateParserTestPage}/>
             </Switch>
           </div>
         </BrowserRouter>

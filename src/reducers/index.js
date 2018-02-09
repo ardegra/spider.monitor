@@ -7,6 +7,8 @@ import DetailSpider from "./pages/DetailSpider";
 import HistorySpider from "./pages/HistorySpider";
 import ModifySpider from "./pages/ModifySpider";
 import spiderTestPage from "./pages/spiderTestPage";
+import entryDateParserTestPage from "./pages/entryDateParserTestPage";
+
 import newsSpiderTestForm from "./form/newsSpiderTestForm";
 import forumSpiderTestForm from "./form/forumSpiderTestForm";
 
@@ -19,5 +21,6 @@ export default combineReducers({
     ModifySpider,
     spiderTestPage,
     newsSpiderTestForm,
-    forumSpiderTestForm
+    forumSpiderTestForm,
+    entryDateParserTestPage
 })
