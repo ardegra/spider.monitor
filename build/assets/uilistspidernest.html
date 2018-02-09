@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    
+</head>
+<body class="theme-default">
+<nav class="left-menu" left-menu>
+    <div class="logo-container">
+        <a href="index.html" class="logo">
+            <img src="../assets/common/img/logo.png" alt="Clean UI Admin Template" />
+            <img class="logo-inverse" src="../assets/common/img/logo-inverse.png" alt="Clean UI Admin Template" />
+        </a>
+    </div>
+    <div class="left-menu-inner scroll-pane">
+        <ul class="left-menu-list left-menu-list-root list-unstyled">
+            <li>
+                <a class="left-menu-link" href="#">
+                    <i class="left-menu-link-icon fa fa-power-off"><!-- --></i>
+                    Start Spider
+                </a>
+            </li>
+            <li>
+                <a class="left-menu-link" href="uilistspidernest.html">
+                    <i class="left-menu-link-icon fa fa-info-circle"><!-- --></i>
+                    Status Spider
+                </a>
+            </li>
+            <li>
+                <a class="left-menu-link" href="#">
+                    <i class="left-menu-link-icon fa fa-clock-o"><!-- --></i>
+                    History
+                </a>
+            </li>
+            <li class="left-menu-list-separator"><!-- --></li>
+            
+        </ul>
+    </div>
+</nav>
+<nav class="top-menu">
+    <div class="menu-icon-container hidden-md-up">
+        <div class="animate-menu-button left-menu-toggle">
+            <div><!-- --></div>
+        </div>
+    </div>
+    <div class="menu">
+        <div class="menu-user-block">
+            <div class="dropdown dropdown-avatar">
+                <a href="javascript: void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <span class="avatar" href="javascript:void(0);">
+                        <img src="../assets/common/img/temp/avatars/1.jpg" alt="Alternative text to the image">
+                    </span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="" role="menu">
+                    <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-user"></i> Profile</a>
+                    <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon icmn-exit"></i> Logout</a>
+                </ul>
+            </div>
+        </div>
+        
+</nav>
+
+<section class="page-content">
+<div class="page-content-inner">
+
+    <!-- Basic Tables -->
+    <section class="panel">
+        <div class="panel-heading">
+            <h2>My Spider</h2>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="margin-bottom-50">
+                        <table id='tbmyspider' class="table table-hover nowrap" width="100%">
+                            <thead class="thead-inverse">
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>
+                                    Antara Oto Spider
+                                </td>
+                                <td>
+                                    <span class='label label-pill label-danger' id='lbspider0'>InActive</span>
+                                </td>
+                                <td>
+                                    <input type='button' id='btnstart0' class='btn btn-rounded btn-success-outline' value='Start' onclick='btnstart(0)'>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>
+                                    Kompas Spider
+                                </td>
+                                <td>
+                                    <span class='label label-pill label-success' id='lbspider1'>Active</span>
+                                </td>
+                                <td>
+                                    <input type='button' id='btnstart1' class='btn btn-rounded btn-danger-outline' value='Stop' onclick='btnstart(1)'>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>
+                                    Kaskus Oto Spider
+                                </td>
+                                <td>
+                                    <span class='label label-pill label-danger' id='lbspider2'>InActive</span>
+                                </td>
+                                <td>
+                                    <input type='button' id='btnstart2' class='btn btn-rounded btn-success-outline' value='Start' onclick='btnstart(2)'>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+						<input type='button' id='btnstartall' class='btn btn-rounded btn-success-outline' value='Start All Spider' onclick='btnstartall()'>
+                    </div>
+					
+                </div>
+				
+            </div>
+            
+        </div>
+    </section>
+    <!-- End Basic Tables  -->
+
+</div>
+
+<!-- Page Scripts -->
+<script>
+	$(function(){
+        $('#tbmyspider').DataTable({
+            responsive: true
+        });
+	});
+	function statactive(i){
+		$("#lbspider"+i).removeClass();
+		$("#lbspider"+i).addClass('label label-pill label-success');
+		$("#lbspider"+i).html("Active");
+		$("#btnstart"+i).removeClass();
+		$("#btnstart"+i).addClass('btn btn-rounded btn-danger-outline');
+		$("#btnstart"+i).val('Stop');
+	}
+	function statinactive(i){
+		$("#lbspider"+i).removeClass();
+		$("#lbspider"+i).addClass('label label-pill label-danger');
+		$("#lbspider"+i).html("InActive");
+		$("#btnstart"+i).removeClass();
+		$("#btnstart"+i).addClass('btn btn-rounded btn-success-outline');
+		$("#btnstart"+i).val('Start');
+	}
+	
+	
+	function isStart(){
+		var ctr = 0;
+		var totspider = 3;
+		var statbtnall = $("#btnstartall").val();
+		if(statbtnall === "Start All Spider"){
+			for(var i=0;i<totspider;i++){
+				if($("#lbspider"+i).html() === "Active"){
+					ctr++;
+				}
+			}
+			if(ctr===totspider){
+				$("#btnstartall").removeClass();
+				$("#btnstartall").addClass('btn btn-rounded btn-danger-outline');
+				$("#btnstartall").val('Stop All Spider');
+			}
+		}else{
+			for(var i=0;i<totspider;i++){
+				if($("#lbspider"+i).html() === "InActive"){
+					ctr++;
+				}
+			}
+			if(ctr>=1){
+				$("#btnstartall").removeClass();
+				$("#btnstartall").addClass('btn btn-rounded btn-success-outline');
+				$("#btnstartall").val('Start All Spider');
+			}
+		}
+	}
+	function btnstart(i){
+		if($("#lbspider"+i).html() === "InActive"){
+			statactive(i);
+			isStart();
+		}else if($("#lbspider"+i).html() === "Active"){
+			statinactive(i);
+			isStart();
+		}
+	}
+	function btnstartall(){
+		var statbtnall = $("#btnstartall").val();
+		if(statbtnall === "Start All Spider"){
+			for(var i=0;i<3;i++){
+				statactive(i);
+				$("#btnstartall").removeClass();
+				$("#btnstartall").addClass('btn btn-rounded btn-danger-outline');
+				$("#btnstartall").val('Stop All Spider');
+			}
+		}else{
+			for(var i=0;i<3;i++){
+				statinactive(i);
+				$("#btnstartall").removeClass();
+				$("#btnstartall").addClass('btn btn-rounded btn-success-outline');
+				$("#btnstartall").val('Start All Spider');
+			}
+		}
+	}
+</script>
+<!-- End Page Scripts -->
+</section>
+
+</body>
+</html>
